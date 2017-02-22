@@ -1,0 +1,39 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <h1>SList</h1>
+        <form  #loginForm="ngForm">
+            <div class="form-group">
+                <!-- <label for="id">User Name</label>
+                <input type="text" class="form-control" required [(ngModel)]="credentials.username" name="username" #name="ngModel">-->
+                <md-card>
+
+                    <md-card-content>
+                        <md-card-title>User Name&nbsp;&nbsp;</md-card-title>
+                        <md-input placeholder="User Name" #username ([ngModel])="credentials.username" ></md-input>
+                    </md-card-content>
+                </md-card>
+                <div *ngIf="loginForm.submitted && !signedIn" class="help-block">Invalid User name</div>
+            </div>
+
+            <div>
+            <h6 class="text-primary" ><md-spinner [class.show]="Authenticating"></md-spinner></h6>
+            </div>
+
+            <div class="form-group">
+                <!-- <label for="name">Password</label>
+                <input type="text" class="form-control" required [(ngModel)]="credentials.password" name="password" #password="ngModel">-->
+                <md-card>
+                    <md-card-content>
+                        <md-card-title>Password&nbsp;&nbsp;</md-card-title>
+                        <md-input placeholder="Password"#password ([ngModel])="credentials.password"></md-input>
+                    </md-card-content>
+                </md-card>
+                <div *ngIf="loginForm.submitted && !signedIn" class="help-block">Invalid Password</div>
+            </div>           
+
+          <!--  <paper-button toggles class="fancy" (click)="authenticate(username.value, password.value)" >Sign In</paper-button> -->
+              <button type="submit" (click)="authenticate(username.value, password.value);" tabindex=-1><paper-button raised>Submit 1</paper-button></button>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<dom-module id="slist-card">
+    <template>
+        
+        <paper-card image="[[studimgurl]]">
+             <img src="[[studimgurl]]" class="card-img-top" style="width: 10%" height="240">
+            <div class="card-content">
+                <div class="cafe-header">[[studid]]
+                </div>
+                <p>[[studname]]</p>
+            </div>
+
+            <div class="card-actions">
+                <button-toggle togglebutton=[[studattendance]] studid=[[studid]]></button-toggle>
+            </div>
+
+        </paper-card>
+    </template>
+
+    <script>
+    Polymer({
+        /* this is the element's prototype */
+        is: 'slist-card',
+        properties: {
+            studid: String,
+            studimgurl: String,
+            studname: String,
+            studattendance: String
+        }
+
+    });
+</script>
+
+</dom-module>

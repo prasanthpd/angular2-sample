@@ -1,0 +1,53 @@
+<dom-module id="button-toggle">
+    <template>
+
+        <style>
+      /* local styles go here */
+      :host {
+        display: inline-block;
+      }
+      iron-icon {
+        fill: rgba(0,0,1000,0);
+        stroke: currentcolor;
+      }
+      :host([pressed]) iron-icon {
+        fill: yellow;
+      }
+    </style>
+
+<!-- local DOM goes here -->
+<paper-button class="fancy">{{togglebutton}}</paper-button>
+
+</template>
+
+<script>
+    Polymer({
+        /* this is the element's prototype */
+        is: 'button-toggle',
+        studid: String,
+        properties: {
+            togglebutton: {
+                type: String,
+                notify: true
+            }
+        },
+        listeners: {
+            'tap': 'toggle'
+        },
+        toggle: function (e) {
+
+            if (this.togglebutton == 'Present') {
+                this.togglebutton = 'Absent';
+
+            } else {
+                this.togglebutton = 'Present';
+            }
+            console.log("firing event");
+            this.fire('attendanceClicked', { togglebutton : this.togglebutton, studid: this.studid});
+            console.log("event fired");
+
+        }
+    });
+</script>
+
+</dom-module>
